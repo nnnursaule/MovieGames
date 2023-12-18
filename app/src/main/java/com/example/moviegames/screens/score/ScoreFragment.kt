@@ -9,8 +9,8 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.game.R
-import com.example.game.databinding.FragmentScoreBinding
+import com.example.moviegames.R
+import com.example.moviegames.databinding.FragmentScoreBinding
 
 class ScoreFragment : Fragment() {
 

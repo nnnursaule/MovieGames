@@ -1,10 +1,9 @@
 package com.example.moviegames
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.example.game.databinding.ActivityMainBinding
+import com.example.moviegames.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

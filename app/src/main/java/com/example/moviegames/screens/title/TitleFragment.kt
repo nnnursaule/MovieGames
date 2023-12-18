@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.example.game.R
-import com.example.game.databinding.FragmentTitleBinding
+import com.example.moviegames.R
+import com.example.moviegames.databinding.FragmentTitleBinding
 
 
 class TitleFragment : Fragment() {

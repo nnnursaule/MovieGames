@@ -13,19 +13,19 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.game.Constants
-import com.example.game.Question
-import com.example.game.R
-import com.example.game.databinding.FragmentGameBinding
+import com.example.moviegames.Constants
+import com.example.moviegames.Question
+import com.example.moviegames.R
+import com.example.moviegames.databinding.FragmentGameBinding
 
 class GameFragment : Fragment(), View.OnClickListener {
 
     lateinit var binding: FragmentGameBinding
 
-    private lateinit var mQuestionsList : ArrayList<Question>
+    private lateinit var mQuestionsList: ArrayList<Question>
 
-    private  var mSelectedPosition: Int = 0
-    private var mCorrectAnswer : Int = 0
+    private var mSelectedPosition: Int = 0
+    private var mCorrectAnswer: Int = 0
     var mCurrrentPosition: Int = 1
 
 
@@ -63,7 +63,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     private fun setQuestion() {
 
 
-        val question: Question = mQuestionsList[mCurrrentPosition -1]
+        val question: Question = mQuestionsList[mCurrrentPosition - 1]
 
         binding.tvQuestion.text = question.question
         binding.imageView.setImageResource(question.image)
@@ -73,7 +73,8 @@ class GameFragment : Fragment(), View.OnClickListener {
         binding.tvOptionFour.text = question.optionFour
 
         binding.pb.progress = mCurrrentPosition
-        binding.tvProgress.text = "$mCurrrentPosition" + "/" + binding.pb.max // displays question number
+        binding.tvProgress.text =
+            "$mCurrrentPosition" + "/" + binding.pb.max // displays question number
 
 /// this resets the appearance for everytime a new question comes up
         defaultAppearance()
@@ -81,7 +82,7 @@ class GameFragment : Fragment(), View.OnClickListener {
 
 // if all questions in the lists are used
 
-        if (mCurrrentPosition == mQuestionsList.size){
+        if (mCurrrentPosition == mQuestionsList.size) {
 
             binding.btnSubmit.text = "Quiz Finished"
 
@@ -89,10 +90,6 @@ class GameFragment : Fragment(), View.OnClickListener {
 
             binding.btnSubmit.text = "Submit"
         }
-
-
-
-
 
 
     }
@@ -108,90 +105,88 @@ class GameFragment : Fragment(), View.OnClickListener {
         options.add(3, binding.tvOptionFour)
 
 
-        for (option in options){
+        for (option in options) {
 
 
             option.setTextColor(Color.parseColor("#7A8089"))
             //default appearance
             option.typeface = Typeface.DEFAULT
-            option.background = context?.let { ContextCompat.getDrawable(it, R.drawable.default_option_border_bg) }
+            option.background =
+                context?.let { ContextCompat.getDrawable(it, R.drawable.default_option_border_bg) }
 
 
         }
-
 
 
     }
 
     override fun onClick(v: View?) {
 
-        when(v?.id) {
+        when (v?.id) {
 
-            R.id.tv_optionOne->{
+            R.id.tv_optionOne -> {
 
                 selectedOptionView(binding.tvOptionOne, 1)
 
             }
 
-            R.id.tv_optionTwo->{
+            R.id.tv_optionTwo -> {
 
                 selectedOptionView(binding.tvOptionTwo, 2)
 
 
-
             }
 
-            R.id.tv_optionThree->{
+            R.id.tv_optionThree -> {
 
                 selectedOptionView(binding.tvOptionThree, 3)
 
 
-
             }
 
-            R.id.tv_optionFour->{
+            R.id.tv_optionFour -> {
 
                 selectedOptionView(binding.tvOptionFour, 4)
 
 
-
-
             }
 
-            R.id.btnSubmit->{
+            R.id.btnSubmit -> {
                 // if user has not selected any option
-                if (mSelectedPosition == 0){
+                if (mSelectedPosition == 0) {
 
                     mCurrrentPosition++ // when current position is increasing means index is increasing
                     //if index is increasing that means we will get a new question from the question list
 
 
-                    when{
-                        mCurrrentPosition <= mQuestionsList.size->{
+                    when {
+                        mCurrrentPosition <= mQuestionsList.size -> {
 
                             setQuestion()
 
-                        } else -> {
+                        }
 
-                        // go to result
+                        else -> {
 
-                        val action = GameFragmentDirections.actionGameFragmentToScoreFragment()
-                        val nameOfPlayer by navArgs<GameFragmentArgs>()
-                        action.score = mCorrectAnswer
-                        action.name = nameOfPlayer.name
-                        findNavController().navigate(action)
+                            // go to result
 
-                    }
+                            val action = GameFragmentDirections.actionGameFragmentToScoreFragment()
+                            val nameOfPlayer by navArgs<GameFragmentArgs>()
+                            action.score = mCorrectAnswer
+                            action.name = nameOfPlayer.name
+                            findNavController().navigate(action)
+
+                        }
                     }
                 } else {
                     // if user selected an option
                     // we will check if its correct or incorrect
 
-                    val question = mQuestionsList[mCurrrentPosition-1]
+                    val question = mQuestionsList[mCurrrentPosition - 1]
 
                     // if selected position 1..4 matches value at the correct answer
                     // correct answer values are 1..4 if the value matches or not matches
-                    if (question.correctAnswer!=mSelectedPosition) {
+                    if (question.correctAnswer != mSelectedPosition) {
 
                         answerView(mSelectedPosition, R.drawable.wrong_option_border_bg)
                     } else {
@@ -203,7 +198,7 @@ class GameFragment : Fragment(), View.OnClickListener {
 
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
-                    if (mCurrrentPosition == mQuestionsList.size){
+                    if (mCurrrentPosition == mQuestionsList.size) {
 
                         binding.btnSubmit.text = "Finished"
                     } else {
@@ -216,9 +211,7 @@ class GameFragment : Fragment(), View.OnClickListener {
                 }
 
 
-
-
             }
-
-
         }
+    }
+}
