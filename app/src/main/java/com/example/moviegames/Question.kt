@@ -1,6 +1,6 @@
 package com.example.moviegames
 
-data class Question {(
+data class Question (
     val id: Int,
     val question: String,
     val image: Int,
@@ -10,4 +10,3 @@ data class Question {(
     val optionFour: String,
     val correctAnswer: Int
 )
-}
