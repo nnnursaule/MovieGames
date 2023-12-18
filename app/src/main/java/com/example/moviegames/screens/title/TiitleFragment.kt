@@ -1,4 +1,4 @@
-package com.example.moviegames.screens.score
+package com.example.moviegames.screens.title
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ScoreFragment.newInstance] factory method to
+ * Use the [TiitleFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ScoreFragment : Fragment() {
+class TiitleFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,7 +35,7 @@ class ScoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score2, container, false)
+        return inflater.inflate(R.layout.fragment_tiitle, container, false)
     }
 
     companion object {
@@ -45,12 +45,12 @@ class ScoreFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ScoreFragment.
+         * @return A new instance of fragment TiitleFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ScoreFragment().apply {
+            TiitleFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
